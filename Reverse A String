@@ -1,0 +1,22 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ReverseAString
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Type something:");
+            string con = Console.ReadLine();
+
+            string backwards = new string(con.Reverse().ToArray());
+
+            Console.WriteLine("Reversed value = " + backwards);
+            Console.ReadLine();
+        }
+    }
+}
