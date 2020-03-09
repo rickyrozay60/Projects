@@ -1,0 +1,413 @@
+using System;
+
+namespace w3resourceExercises
+{
+    using System.Collections.Generic;
+    using System.ComponentModel.Design;
+    using System.Linq;
+    using System.Reflection.Metadata.Ecma335;
+    using System.Security.Cryptography.X509Certificates;
+    using System.Threading;
+    using System.Threading.Channels;
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+           HPCheck(); 
+        }
+
+        public void HelloWorld()
+        {
+            Console.WriteLine("Hello");
+            Console.WriteLine("User");
+        }
+
+        public void Addition(int x, int y)
+        {
+            var result = x + y;
+            Console.WriteLine(result);
+        }
+
+        public void Divide(int x, int y)
+        {
+            var result = x / y;
+            Console.WriteLine(result);
+        }
+
+        public static void SeveralSums()
+        {
+            Console.WriteLine(-1 + (4 * 6));
+            Console.WriteLine((35 + 5) % 7);
+            Console.WriteLine(14 + -4 * 6 / 11);
+            Console.WriteLine(2 + 15 / 6 * 1 - 7 % 2);
+        }
+
+        public static void NumberSwap()
+        {
+            Console.WriteLine("Input the first number: ");
+            var number1 = Console.ReadLine();
+            Console.WriteLine("Input the second number: ");
+            var number2 = Console.ReadLine();
+
+            var temp = number1;
+            number1 = number2;
+            number2 = temp;
+
+            Console.WriteLine("After Swapping:");
+            Console.WriteLine("First number: " + number1);
+            Console.WriteLine("Second number: " + number2);
+        }
+
+        public static void Multiply()
+        {
+            Console.WriteLine("Input the first number to multiply: ");
+            var number1 = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("Input the second number to multiply: ");
+            var number2 = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("Input the third number to multiply: ");
+            var number3 = Int32.Parse(Console.ReadLine());
+
+            var result = number1 * number2 * number3;
+            Console.WriteLine(result);
+        }
+
+        public static void AddSubtractMultiDivMod()
+        {
+            Console.WriteLine("Input the first number: ");
+            var x = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("Input the second number: ");
+            var y = Int32.Parse(Console.ReadLine());
+
+            Console.WriteLine(x + y);
+            Console.WriteLine(x - y);
+            Console.WriteLine(x * y);
+            Console.WriteLine(x % y);
+        }
+
+        public static void Average()
+        {
+            double number1, number2, number3, number4;
+
+            Console.Write("Enter the First number: ");
+            number1 = Convert.ToDouble(Console.ReadLine());
+
+            Console.Write("Enter the Second number: ");
+            number2 = Convert.ToDouble(Console.ReadLine());
+
+            Console.Write("Enter the third number: ");
+            number3 = Convert.ToDouble(Console.ReadLine());
+
+            Console.Write("Enter the fourth number: ");
+            number4 = Convert.ToDouble(Console.ReadLine());
+
+            double result = (number1 + number2 + number3 + number4) / 4;
+            Console.WriteLine("The average of {0}, {1}, {2}, {3} is: {4} ",
+                number1, number2, number3, number4, result);
+        }
+
+        public static void Age()
+        {
+            Console.WriteLine("Input your age: ");
+            var age = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("You look older than "+ age);
+        }
+
+        public static void Display()
+        {
+            Console.WriteLine("Input a number: ");
+            var result = Int32.Parse(Console.ReadLine());
+
+            Console.WriteLine("{0} {0} {0} {0}", result);
+            Console.WriteLine("{0}{0}{0}{0}", result);
+        }
+
+        public static void Rectangle()
+        {
+            Console.WriteLine("Input a number: ");
+            var x = Int32.Parse(Console.ReadLine());
+
+            Console.WriteLine("{0}{0}{0}", x);
+            Console.WriteLine("{0} {0}", x);
+            Console.WriteLine("{0} {0}", x);
+            Console.WriteLine("{0} {0}", x);
+            Console.WriteLine("{0}{0}{0}", x);
+
+        }
+
+        public static void Temperature()
+        {
+            Console.WriteLine("Input a temperature in Celsius: ");
+            var x = Convert.ToDouble(Console.ReadLine());
+
+            var kelvin = x + 273;
+            var fahrenheit = (x * 1.8) + 32;
+
+            Console.WriteLine("Kelvin: " + kelvin);
+            Console.WriteLine("Fahrenheit: " + fahrenheit);
+        }
+
+        public static void RemoveAtIndex()
+        {
+            Console.WriteLine("Choose an index number: ");
+            var x = Int32.Parse(Console.ReadLine());
+
+            var bigString = "Are you mad?";
+
+           bigString = bigString.Remove(x, 1);
+
+            Console.WriteLine(bigString);
+        }
+        
+        public static void FirstAndLastReplace(string str)
+        {
+           var array = str.ToCharArray();
+
+            char first = array[0];
+            char last = array[str.Length - 1];
+            string result = "";
+
+            array[0] = last;
+            array[str.Length - 1] = first;
+
+            result = string.Join("", array);
+            Console.WriteLine(result);
+        }
+
+        public static void CharAddedToStartAndEnd()
+        {
+            Console.WriteLine("Input a string: ");
+            var input = Console.ReadLine();
+
+            input.ToCharArray();
+
+            char first = input[0];
+            Console.WriteLine(first + input + first);
+
+        }
+
+        public static bool PosNegIntCheck()
+        {
+            Console.WriteLine("Input your first integer: ");
+            var x = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("Input your second integer: ");
+            var y = Int32.Parse(Console.ReadLine());
+
+            if (x > 0 || y > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
+        }
+
+        public static void IfEqualSumReturnTriple(int x, int y)
+        {
+            if (x == y)
+            {
+                var result = (x + y) * 3;
+                Console.WriteLine(result);
+            }
+            else
+            {
+                Console.WriteLine(x + y);
+            }
+        }
+
+        public static void AbsoluteDifference(int x, int y)
+        {
+            if (x > y)
+            {
+                Console.WriteLine((x - y) * 2);
+            }
+            else
+            {
+                Console.WriteLine(x - y);
+            }
+        }
+
+        public static bool Integer20Check(int x, int y)
+        {
+            return (x >= 20) || (x + y >= 20) || (y >= 20);
+        }
+
+        public static bool IntWithinTwentyOfOneHundred(int x)
+        {
+            return (x >= 80) && (x <= 120);
+        }
+
+        public static void MakeInputLowerCase(string x)
+        {
+            Console.WriteLine(x.ToLower());
+        }
+
+        public static string FindLongestWordInString(string s)
+        {
+           return s.Split("").OrderBy(x => x.Length).Last();
+        }
+
+        public static void OddNumberPrintOut()
+        {
+            for (var i = 0; i <= 100; i++)
+            {
+                if (i % 2 != 0)
+                {
+                    Console.WriteLine(i);
+                }
+            }
+        }
+
+        public static int PrimeNumberSum(int n)
+        {
+            var mySum = 0;
+            var i = 1;
+            var counter = 1;
+
+            while (counter < n + 1)
+            {
+                if (isPrime(i))
+                {
+                    mySum += i;
+                    counter++;
+                }
+                i++;
+            }
+
+            Console.WriteLine(mySum);
+            return mySum;
+            
+
+
+            bool isPrime(int n)
+            {
+                if (n == 1) return false;
+                if (n == 2) return true;
+                if (n % 2 == 0) return true;
+
+                int x = (int) Math.Floor(Math.Sqrt(n));
+                for (int i = 2; i <= x; i++)
+                {
+                    if (n % i == 0) return false;
+                }
+
+                return true;
+            }
+            
+        }
+
+        public static int SumOfDigits(int x)
+        {
+            return x.ToString().Select(digit => int.Parse(digit.ToString())).ToArray().Sum();
+        }
+
+        public static void ReverseASentence()
+        {
+            Console.WriteLine("Type a sentence");
+            var input = Console.ReadLine();
+            var str = input.Split(" ");
+
+            foreach (var s in str.Reverse())
+            {
+                Console.Write(s + " ");
+            }
+
+            Console.ReadLine();
+        }
+
+        public static void MultiplyTwoArraysOfIntegers(int[] array1, int[] array2)
+        {
+            for (int i = 0; i < array1.Length; i++)
+            {
+                Console.WriteLine(array1[i] * array2[i] + " ");
+            }
+
+            Console.WriteLine();
+        }
+
+        public static void FourCopyString()
+        {
+            Console.WriteLine("Input a string: ");
+            var input = Console.ReadLine();
+            
+            if (input != null && input.Length < 4)
+            { 
+                Console.WriteLine(input);
+            }
+            else
+            {
+                if (input == null) return;
+                var s = input.Substring(input.Length - 4, 4);
+                Console.WriteLine("{0}{0}{0}{0}", s);
+            }
+        }
+
+        public static void MultipleOfThreeOrSeven()
+        {
+            Console.WriteLine("Enter an integer");
+            var input = int.Parse(Console.ReadLine() ?? throw new InvalidOperationException());
+
+            if ((input > 0) && (input % 3 == 0 || input % 7 == 0))
+            {
+                Console.WriteLine("True");
+            }
+            else
+            {
+                Console.WriteLine("False");
+            }
+        }
+
+        public static bool StringFirstWordChecker()
+        {
+            Console.WriteLine("Please enter a sentence: ");
+            var firstInput = Console.ReadLine();
+            var firstWord = firstInput[0];
+
+            Console.WriteLine("Please enter a second sentence");
+            var secondInput = Console.ReadLine();
+            var secondWord = secondInput[0];
+
+            return firstWord == secondWord;
+        }
+
+        public static bool CheckTwoNumbers()
+        {
+            Console.WriteLine("Input the first number: ");
+            var firstNum = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Input the second number: ");
+            var secondNum = int.Parse(Console.ReadLine());
+
+            return (firstNum < 100) || (secondNum < 100) && (firstNum > 200) || (secondNum > 200);
+        }
+
+        public static bool RangeCheck()
+        {
+            Console.WriteLine("Enter the first integer: ");
+            var input1 = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter the second integer: ");
+            var input2 = int.Parse(Console.ReadLine());
+
+            return ((input1 > -10) && (input1 < 10)) && ((input2 > -10 && input2 < 10));
+        }
+
+        public static void HPCheck()
+        {
+            Console.WriteLine("Enter a sentence: ");
+            var input = Console.ReadLine();
+            var newString = "PH";
+
+            if (input[0] == 'P' && input[1] == 'H')
+            {
+                Console.WriteLine(newString);
+            }
+            
+        }
+
+
+
+    }
+}
